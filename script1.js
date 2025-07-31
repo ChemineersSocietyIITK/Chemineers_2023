@@ -2,13 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const navbar = document.querySelector(".navbar");
     let lastScrollTop = 0;
 
-    // Add initial transparent class
-    navbar.classList.add("transparent");
+    // // Add initial transparent class
+    // navbar.classList.add("transparent");
 
-    // Create and append the info block
-    const infoBlock = document.createElement("div");
-    infoBlock.classList.add("info-block", "hidden");
-    navbar.appendChild(infoBlock);
+    // // Create and append the info block
+    // const infoBlock = document.createElement("div");
+    // infoBlock.classList.add("info-block", "hidden");
+    // navbar.appendChild(infoBlock);
 
     // Add two lines of text to the info block
     const line1 = document.createElement("div");

@@ -298,23 +298,19 @@ html{
     width: 100%;
   }
 
+.TTL{
+
+  height:70vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)),url(./assets/custom_team_5.png );
+  background-position: center;
+  background-size:100% 100%;
+  text-align: center;
+  color: #fff;
+}
+
+@media (max-width: 425px) {
   .TTL{
-  
-    
-    height:70vh;
-    
-    width: 100%;
-    
-    background-image: linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)),url(./assets/custom_team_4.png );
-     
-    background-position: center;
-    background-size:100% 100%;
-    text-align: center;
-    color: #fff;
+    margin-top: 1rem;
   }
-
-
-
-
-
-
+}
