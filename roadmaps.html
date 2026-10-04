@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Roadmaps - Chemineers Society</title>
+
+    <link rel="icon" href="assets/logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="style_index.css">
+    <link rel="stylesheet" href="style_resources.css">
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- AOS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/aos@next/dist/aos.css"
+    >
+
+
+    <style>
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar-bg-dark {
+            background-color: #071f49 !important;
+        }
+
+        .navbar-bg-dark .navbar-nav {
+            margin-left: auto !important;
+            margin-right: 5rem !important;
+        }
+
+        .navbar-bg-dark .nav-link {
+            color: white !important;
+            font-size: 16px;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+
+        .navbar-bg-dark .nav-link:hover {
+            color: #d8d8ff !important;
+        }
+
+        .navbar-bg-dark .navbar-brand {
+            margin-left: 10px;
+        }
+
+        .navbar-bg-dark .navbar-toggler {
+            border-color: white;
+        }
+
+
+        /* =========================================
+           MAIN PAGE
+        ========================================= */
+
+        .academic-page {
+            padding-top: 125px;
+            padding-bottom: 70px;
+        }
+
+
+        /* =========================================
+           ROADMAP HEADING
+        ========================================= */
+
+        .roadmap-heading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 65px;
+        }
+
+
+        /* ROADMAP IMAGE */
+
+        .roadmap-heading-image {
+            width: 300px;
+            height: 175px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.15);
+            flex-shrink: 0;
+        }
+
+        .roadmap-heading-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* ROADMAP TEXT */
+
+        .roadmap-heading h1 {
+            font-size: 65px;
+            font-weight: 700;
+            color: #080867;
+            margin: 0;
+        }
+
+
+        /* =========================================
+           PDF GRID
+        ========================================= */
+
+        .pdf-grid {
+            width: 82%;
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            column-gap: 70px;
+            row-gap: 55px;
+        }
+
+
+        /* =========================================
+           PDF CARD
+        ========================================= */
+
+        .pdf-card {
+            background-color: #4c4c81;
+            color: white;
+
+            border-radius: 25px;
+
+            min-height: 205px;
+
+            padding: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            box-sizing: border-box;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 12px 25px rgba(0, 0, 0, 0.18);
+        }
+
+
+        /* =========================================
+           SUBJECT IMAGE
+        ========================================= */
+
+        .pdf-preview {
+            width: 125px;
+            height: 150px;
+
+            background-color: white;
+
+            border-radius: 5px;
+
+            flex-shrink: 0;
+
+            overflow: hidden;
+
+            margin-right: 25px;
+
+            box-shadow:
+                0 2px 7px rgba(0, 0, 0, 0.12);
+        }
+
+        .pdf-preview img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* =========================================
+           CARD CONTENT
+        ========================================= */
+
+        .pdf-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pdf-content h2 {
+            font-size: 21px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .pdf-content p {
+            font-size: 14px;
+            line-height: 1.45;
+            margin-bottom: 14px;
+        }
+
+
+        /* =========================================
+           PDF LINK
+        ========================================= */
+
+        .view-pdf {
+            color: white;
+
+            background: none;
+
+            border: none;
+
+            padding: 0;
+
+            font-size: 14px;
+
+            text-decoration: underline;
+
+            cursor: pointer;
+        }
+
+        .view-pdf:hover {
+            color: white;
+        }
+
+
+        /* =========================================
+           PDF MODAL
+        ========================================= */
+
+        .pdf-modal {
+            display: none;
+
+            position: fixed;
+
+            z-index: 2000;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.80);
+
+            padding: 35px;
+        }
+
+        .pdf-modal-content {
+            position: relative;
+
+            width: 92%;
+            height: 92%;
+
+            margin: auto;
+
+            background: white;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+        }
+
+        .pdf-modal iframe {
+            width: 100%;
+            height: 100%;
+
+            border: none;
+        }
+
+        .close-pdf {
+            position: absolute;
+
+            right: 15px;
+            top: 10px;
+
+            z-index: 10;
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #071f49;
+
+            color: white;
+
+            font-size: 24px;
+
+            cursor: pointer;
+        }
+
+        .close-pdf:hover {
+            background: #0d2d60;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+            background-color: #071f49 !important;
+
+            color: white !important;
+
+            margin-top: 50px;
+
+            padding-top: 45px !important;
+            padding-bottom: 45px !important;
+
+            min-height: 180px;
+        }
+
+        .footer b {
+            color: white !important;
+        }
+
+        .footer div {
+            color: white !important;
+        }
+
+        .footer a {
+            color: white !important;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #d8d8ff !important;
+            text-decoration: underline;
+        }
+
+        .footer .media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer .smedia {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer .smedia svg {
+            fill: white !important;
+        }
+
+        .footer .loc {
+            text-align: center;
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .pdf-grid {
+                width: 90%;
+                column-gap: 35px;
+            }
+
+            .pdf-preview {
+                width: 110px;
+                height: 140px;
+                margin-right: 18px;
+            }
+
+            .pdf-content h2 {
+                font-size: 19px;
+            }
+
+            .pdf-content p {
+                font-size: 13px;
+            }
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 750px) {
+
+            .navbar-bg-dark .navbar-nav {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            .academic-page {
+                padding-top: 105px;
+            }
+
+            .roadmap-heading {
+                flex-direction: column;
+                gap: 25px;
+                margin-bottom: 45px;
+            }
+
+            .roadmap-heading-image {
+                width: 85%;
+                max-width: 400px;
+                height: 200px;
+            }
+
+            .roadmap-heading h1 {
+                font-size: 45px;
+            }
+
+            .pdf-grid {
+                width: 90%;
+                grid-template-columns: 1fr;
+                row-gap: 35px;
+            }
+
+            .pdf-card {
+                height: auto;
+                min-height: 220px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .pdf-preview {
+                width: 125px;
+                height: 150px;
+                margin-right: 0;
+                margin-bottom: 18px;
+            }
+
+            .pdf-modal {
+                padding: 10px;
+            }
+
+            .pdf-modal-content {
+                width: 100%;
+                height: 95%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+
+    <nav class="navbar-bg-dark navbar navbar-expand-lg fixed-top resource-page">
+
+        <div class="container-fluid">
+
+            <a
+                class="navbar-brand"
+                href="index.html"
+            >
+
+                <img
+                    src="assets/logo.png"
+                    alt="Chemineers Society"
+                    width="30"
+                    height="40"
+                >
+
+            </a>
+
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+
+            <div
+                class="collapse navbar-collapse"
+                id="navbarSupportedContent"
+            >
+
+                <ul class="navbar-nav mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="index.html"
+                        >
+                            Home
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="events.html"
+                        >
+                            Events
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="projects.html"
+                        >
+                            Simutech
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="blogs.html"
+                        >
+                            Blog
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="team.html"
+                        >
+                            Team
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="https://chemineerssocietyiitk.github.io/Exergy2024/"
+                            target="_blank"
+                        >
+                            Exergy
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="resources.html"
+                        >
+                            Resources
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item active">
+                        <a
+                            class="nav-link"
+                            href="academic_resources.html"
+                        >
+                            Academic Resources
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================= -->
+
+    <main class="academic-page">
+
+
+        <!-- =========================================
+             ROADMAP HEADING
+        ========================================= -->
+
+        <div
+            class="roadmap-heading"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+        >
+
+            <div class="roadmap-heading-image">
+
+                <img
+                    src="assets/roadmap%20photo.jpg"
+                    alt="Roadmap"
+                >
+
+            </div>
+
+
+            <h1>
+                ROADMAPS
+            </h1>
+
+        </div>
+
+
+
+        <!-- =========================================
+             ROADMAP CARDS
+        ========================================= -->
+
+        <div class="pdf-grid">
+
+
+            <!-- =========================================
+                 HEAT TRANSFER
+            ========================================= -->
+
+            <div
+                class="pdf-card"
+                data-aos="slide-right"
+                data-aos-duration="1000"
+            >
+
+                <div class="pdf-preview">
+
+                    <img
+                        src="assets/heat_transfer.png"
+                        alt="Heat Transfer Roadmap"
+                    >
+
+                </div>
+
+
+                <div class="pdf-content">
+
+                    <h2>
+                        Heat Transfer Roadmap
+                    </h2>
+
+                    <p>
+                        A structured roadmap covering the
+                        important concepts and learning path
+                        for Heat Transfer.
+                    </p>
+
+                    <button
+                        class="view-pdf"
+                        onclick="openPDF('Heat_Transfer_Roadmap_final.pdf')"
+                    >
+                        Here's the link →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 ESC113
+            ========================================= -->
+
+            <div
+                class="pdf-card"
+                data-aos="slide-left"
+                data-aos-duration="1000"
+            >
+
+                <div class="pdf-preview">
+
+                    <img
+                        src="assets/esc113.png"
+                        alt="ESC113 Course Roadmap"
+                    >
+
+                </div>
+
+
+                <div class="pdf-content">
+
+                    <h2>
+                        ESC113 Course Roadmap
+                    </h2>
+
+                    <p>
+                        Course roadmap covering the modules
+                        and learning structure of ESC113.
+                    </p>
+
+                    <button
+                        class="view-pdf"
+                        onclick="openPDF('ESC113_Course_Roadmap_Modules_1_to_7.pdf')"
+                    >
+                        Here's the link →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 THERMODYNAMICS
+            ========================================= -->
+
+            <div
+                class="pdf-card"
+                data-aos="slide-right"
+                data-aos-duration="1000"
+            >
+
+                <div class="pdf-preview">
+
+                    <img
+                        src="assets/thermodynamics.png"
+                        alt="CHE221 Thermodynamics Roadmap"
+                    >
+
+                </div>
+
+
+                <div class="pdf-content">
+
+                    <h2>
+                        CHE221 Thermodynamics Roadmap
+                    </h2>
+
+                    <p>
+                        A roadmap covering the major topics
+                        and learning path for Thermodynamics.
+                    </p>
+
+                    <button
+                        class="view-pdf"
+                        onclick="openPDF('CHE221_Thermodynamics_Roadmap.pdf')"
+                    >
+                        Here's the link →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 MASS TRANSFER
+            ========================================= -->
+
+            <div
+                class="pdf-card"
+                data-aos="slide-left"
+                data-aos-duration="1000"
+            >
+
+                <div class="pdf-preview">
+
+                    <img
+                        src="assets/mass_transfer.png"
+                        alt="CHE213 Mass Transfer Roadmap"
+                    >
+
+                </div>
+
+
+                <div class="pdf-content">
+
+                    <h2>
+                        CHE213 Mass Transfer Roadmap
+                    </h2>
+
+                    <p>
+                        A structured roadmap for learning
+                        the important Mass Transfer concepts.
+                    </p>
+
+                    <button
+                        class="view-pdf"
+                        onclick="openPDF('CHE213_Mass_Transfer_Roadmap-2.pdf')"
+                    >
+                        Here's the link →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 CHE251
+            ========================================= -->
+
+            <div
+                class="pdf-card"
+                data-aos="slide-right"
+                data-aos-duration="1000"
+            >
+
+                <div class="pdf-preview">
+
+                    <img
+                        src="assets/che251.png"
+                        alt="CHE251 Roadmap"
+                    >
+
+                </div>
+
+
+                <div class="pdf-content">
+
+                    <h2>
+                        CHE251 Roadmap
+                    </h2>
+
+                    <p>
+                        A structured roadmap for Chemical
+                        Process Calculations and its
+                        important concepts.
+                    </p>
+
+                    <button
+                        class="view-pdf"
+                        onclick="openPDF('CHE251_Roadmap.pdf')"
+                    >
+                        Here's the link →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 CHE261
+            ========================================= -->
+
+            <div
+                class="pdf-card"
+                data-aos="slide-left"
+                data-aos-duration="1000"
+            >
+
+                <div class="pdf-preview">
+
+                    <img
+                        src="assets/che261.png"
+                        alt="CHE261 Roadmap"
+                    >
+
+                </div>
+
+
+                <div class="pdf-content">
+
+                    <h2>
+                        CHE261 Roadmap
+                    </h2>
+
+                    <p>
+                        A structured roadmap covering the
+                        important concepts of Chemical
+                        Process Industries.
+                    </p>
+
+                    <button
+                        class="view-pdf"
+                        onclick="openPDF('CHE261_Roadmap.pdf')"
+                    >
+                        Here's the link →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================================
+         PDF MODAL
+    ========================================= -->
+
+    <div
+        id="pdfModal"
+        class="pdf-modal"
+    >
+
+        <div class="pdf-modal-content">
+
+            <button
+                class="close-pdf"
+                onclick="closePDF()"
+            >
+                ×
+            </button>
+
+            <iframe
+                id="pdfFrame"
+                src=""
+            >
+            </iframe>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <div class="footer container-fluid">
+
+        <div class="row">
+
+            <div class="col loc">
+
+                <b>
+                    External Links
+                </b>
+
+                <div>
+
+                    <a
+                        href="https://www.iitk.ac.in/"
+                        target="_blank"
+                    >
+                        IIT Kanpur
+                    </a>
+
+                </div>
+
+                <div>
+
+                    <a
+                        href="https://www.iitk.ac.in/che/"
+                        target="_blank"
+                    >
+                        Chemical Engineering, IITK
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col">
+
+                <div class="row media">
+
+
+                    <!-- FACEBOOK -->
+
+                    <div class="col smedia">
+
+                        <a
+                            href="https://www.facebook.com/ChemineersSociety/"
+                            target="_blank"
+                        >
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="40"
+                                height="40"
+                                fill="white"
+                                viewBox="0 0 16 16"
+                            >
+
+                                <path
+                                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
+                                />
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- YOUTUBE -->
+
+                    <div class="col smedia">
+
+                        <a
+                            href="https://www.youtube.com/@chemineersiitk8410"
+                            target="_blank"
+                        >
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="40"
+                                height="40"
+                                fill="white"
+                                viewBox="0 0 16 16"
+                            >
+
+                                <path
+                                    d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"
+                                />
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- INSTAGRAM -->
+
+                    <div class="col smedia">
+
+                        <a
+                            href="https://www.instagram.com/chemineerssociety/"
+                            target="_blank"
+                        >
+
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="40"
+                                height="40"
+                                fill="white"
+                                viewBox="0 0 16 16"
+                            >
+
+                                <path
+                                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.92 3.92 0 0 0-1.417.923A3.92 3.92 0 0 0 .42 2.76c-.198.509-.332 1.09-.372 1.943C.01 5.556 0 5.829 0 8s.01 2.444.048 3.297c.04.853.174 1.434.372 1.943.205.526.48.972.923 1.417.445.445.891.718 1.417.923.509.198 1.09.332 1.943.372C5.556 15.99 5.829 16 8 16s2.444-.01 3.297-.048c.853-.04 1.434-.174 1.943-.372a3.92 3.92 0 0 0 1.417-.923c.445-.445.718-.891.923-1.417.198-.509.332-.891.372-1.943C15.99 10.444 16 10.171 16 8s-.01-2.444-.048-3.297c-.04-.853-.174-1.434-.372-1.943a3.92 3.92 0 0 0-.923-1.417A3.92 3.92 0 0 0 13.24.42c-.509-.198-1.09-.332-1.943-.372C10.444.01 10.171 0 8 0zm0 1.441c2.137 0 2.389.008 3.233.046.78.036 1.204.166 1.486.276.373.137.639.302.918.581.279.279.444.545.581.918.11.282.24.706.276 1.486.038.844.046 1.096.046 3.233s-.008 2.389-.046 3.233c-.036.78-.166 1.204-.276 1.486-.137.373-.302.639-.581.918-.279.279-.545.444-.918.581-.282.11-.706.24-.918.581-.279.279-.444.545-.581.918-.11.282-.24.706-.276 1.486C1.449 10.389 1.441 10.137 1.441 8s.008-2.389.046-3.233c.036-.78.166-1.204.276-1.486.137-.373.302-.639.581-.918.279-.279.545-.444.918-.581.282-.11.706-.24.918-.581.279-.279.444-.545.581-.918.11-.282.24-.706.276-1.486C5.611 1.449 5.863 1.441 8 1.441z"
+                                />
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        function openPDF(pdfFile) {
+
+            document.getElementById("pdfFrame").src = pdfFile;
+
+            document.getElementById("pdfModal").style.display = "block";
+
+        }
+
+
+        function closePDF() {
+
+            document.getElementById("pdfFrame").src = "";
+
+            document.getElementById("pdfModal").style.display = "none";
+
+        }
+
+
+        window.onclick = function(event) {
+
+            const modal = document.getElementById("pdfModal");
+
+            if (event.target === modal) {
+
+                closePDF();
+
+            }
+
+        }
+
+    </script>
+
+
+    <!-- Bootstrap JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    <!-- AOS -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+
+
+    <script src="script1.js"></script>
+
+</body>
+
+</html>
